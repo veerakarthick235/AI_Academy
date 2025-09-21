@@ -3,3 +3,4 @@ google-cloud-firestore
 cloudinary
 python-dotenv
 gunicorn
+firebase-admin
