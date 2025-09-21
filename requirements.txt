@@ -1,3 +1,5 @@
 Flask
-firebase-admin
-python-detenv
+google-cloud-firestore
+cloudinary
+python-dotenv
+gunicorn
