@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI Academy{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+</head>
+
+<body id="dashboard-body" data-user-id="{{ user_id or '' }}">
+
+    {% if 'login' not in request.path and 'register' not in request.path %}
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3>AI Academy</h3>
+        </div>
+        <ul class="sidebar-menu">
+            <li><a href="{{ url_for('dashboard', user_id=user_id) }}" class="{{ 'active' if active_page == 'dashboard' }}"><i class='bx bxs-grid-alt'></i><span>Dashboard</span></a></li>
+            <li><a href="{{ url_for('profile', user_id=user_id) }}" class="{{ 'active' if active_page == 'profile' }}"><i class='bx bxs-user'></i><span>Profile</span></a></li>
+            <li><a href="{{ url_for('assessments', user_id=user_id) }}" class="{{ 'active' if active_page == 'assessments' }}"><i class='bx bxs-edit-alt'></i><span>Assessments</span></a></li>
+            <li><a href="{{ url_for('leaderboard', user_id=user_id) }}" class="{{ 'active' if active_page == 'leaderboard' }}"><i class='bx bxs-trophy'></i><span>Leaderboard</span></a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <button id="logoutBtn"><i class='bx bx-log-out'></i><span>Log Out</span></button>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="main-content-area">
+        <div class="main-header">
+            <div class="header-title">
+                {% block header_title %}{% endblock %}
+            </div>
+            <div class="profile-container">
+                <span id="header-username"></span>
+                <img id="header-profile-pic" src="https://i.stack.imgur.com/34AD2.jpg" alt="Profile">
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+    </div>
+    
+    <div class="chatbot-widget">
+        <div class="chat-header">
+            AI Academy Assistant
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message bot-message">
+                Hello! How can I help you today?
+            </div>
+        </div>
+        <form class="chat-input-form">
+            <input type="text" placeholder="Ask a question..." required>
+            <button type="submit"><i class='bx bxs-send'></i></button>
+        </form>
+    </div>
+
+    <button class="chatbot-fab">
+        <i class='bx bx-message-rounded-dots'></i>
+    </button>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script> <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAEIufbLEvzkd3EzU2BuSdyUKX8mO2vDRY",
+            authDomain: "quiz-portal-235.firebaseapp.com",
+            projectId: "quiz-portal-235",
+            storageBucket: "quiz-portal-235.appspot.com",
+            messagingSenderId: "358434543170",
+            appId: "1:358434543170:web:9ef309d0b51c74eeb1bfdb",
+            measurementId: "G-R1ZEJTG4L"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore(); // This line will now work correctly
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', () => {
+                    auth.signOut().then(() => {
+                        window.location.href = "{{ url_for('login') }}";
+                    }).catch(error => console.error("Logout Error:", error));
+                });
+            }
+
+            const userId = document.body.dataset.userId;
+            if (userId) {
+                fetch(`/api/user/${userId}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.success) {
+                            const userData = data.data;
+                            const usernameElem = document.getElementById('header-username');
+                            const profilePicElem = document.getElementById('header-profile-pic');
+                            
+                            if (usernameElem) {
+                                usernameElem.textContent = userData.name;
+                            }
+                            if (profilePicElem && userData.profileImageUrl) {
+                                profilePicElem.src = userData.profileImageUrl;
+                            }
+                        }
+                    })
+                    .catch(err => console.error("Error fetching header info:", err));
+            }
+        });
+    </script>
+    
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+</body>
+</html>

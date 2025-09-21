@@ -1,0 +1,400 @@
+/* --- General & Variables --- */
+:root {
+    --sidebar-bg: #1F2A40;
+    --sidebar-active-bg: #3B82F6;
+    --sidebar-text: #E0E0E0;
+    --main-bg: #F1F5F9;
+    --card-bg: #FFFFFF;
+    --text-dark: #1E293B;
+    --text-light: #64748B;
+    --border-color: #E2E8F0;
+    --danger-color: #d9534f;
+    --sidebar-width: 260px;
+}
+
+body {
+    font-family: 'Public Sans', sans-serif;
+    background-color: var(--main-bg);
+    margin: 0;
+    color: var(--text-dark);
+    display: flex;
+}
+
+/* --- Authentication Pages --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--sidebar-bg), var(--sidebar-active-bg));
+}
+
+.auth-box {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-box h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--sidebar-bg);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--text-light);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: var(--sidebar-bg);
+    color: var(--card-bg);
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.auth-btn:hover {
+    background-color: var(--sidebar-active-bg);
+}
+
+.auth-switch {
+    margin-top: 20px;
+    color: var(--text-light);
+}
+
+.auth-switch a {
+    color: var(--sidebar-bg);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.error-message {
+    color: var(--danger-color);
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+
+/* --- Sidebar --- */
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 10px;
+}
+
+.sidebar-header h3 {
+    font-size: 24px;
+    color: var(--card-bg);
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--sidebar-text);
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar-menu a i {
+    font-size: 22px;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+}
+
+.sidebar-menu a span {
+    font-weight: 500;
+}
+
+.sidebar-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu a.active {
+    background-color: var(--sidebar-active-bg);
+    color: var(--card-bg);
+}
+
+.sidebar-footer button {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--text-light);
+    color: var(--sidebar-text);
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.sidebar-footer button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-footer button i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+
+/* --- Main Content Area --- */
+.main-content-area {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.main-header {
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+#header-username {
+    font-weight: 500;
+}
+
+#header-profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-title {
+    position: absolute;
+    left: calc(var(--sidebar-width) + 25px);
+}
+
+.header-title h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* --- Dashboard Grid & Cards --- */
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.performance-card,
+.courses-overview {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card-span-2 {
+    grid-column: span 2;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.toggle-buttons {
+    display: flex;
+    background: var(--main-bg);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.toggle-btn {
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-light);
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.toggle-btn.active {
+    background: var(--sidebar-active-bg);
+    color: var(--card-bg);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.chart-container {
+    height: 320px;
+}
+
+.pie-chart-container {
+    position: relative;
+    height: 200px;
+    margin: 40px 0;
+}
+
+.pie-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.pie-legend {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 3px;
+}
+
+/* --- Placeholder Page --- */
+.placeholder-page {
+    padding: 40px;
+    text-align: center;
+}
+
+.placeholder-page h1 {
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* --- Assessments Page --- */
+.assessment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.assessment-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.assessment-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.assessment-card .lang-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    color: var(--sidebar-active-bg);
+}
+
+.assessment-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: var(--text-dark);
+}
+
+.assessment-card p {
+    color: var(--text-light);
+    font-size: 15px;
+    line-height: 1.5;
+    flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+.btn-test {
+    display: inline-block;
+    background-color: var(--sidebar-bg);
+    color: var(--card-bg);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-test:hover {
+    background-color: var(--sidebar-active-bg);
+}

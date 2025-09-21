@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+{% block title %}Assessments{% endblock %}
+
+{% block content %}
+<div class="main-container">
+    <header class="header">
+        <div class="header-left">
+            <h2>Assessments</h2>
+            <p>Choose a topic to test your skills.</p>
+        </div>
+        <div class="header-right">
+             <div class="profile-image-header">
+                <img src="{{ url_for('static', filename='img/default-avatar.png') }}" alt="Profile">
+            </div>
+        </div>
+    </header>
+
+    <div class="assessment-grid">
+        <div class="assessment-card">
+            <i class='bx bxl-python lang-icon' style="color: #4B8BBE;"></i>
+            <h3>Python Programming</h3>
+            <p>Test your knowledge with 25 questions covering Python syntax, data structures, and more.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='python') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bxl-java lang-icon' style="color: #f89820;"></i>
+            <h3>Java Programming</h3>
+            <p>25 questions on core Java concepts, object-oriented programming, and the JVM.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='java') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bxl-c-plus-plus lang-icon' style="color: #004482;"></i>
+            <h3>C++ Programming</h3>
+            <p>Assess your skills in C++ with 25 questions on pointers, memory management, and OOP.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='cplusplus') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bxl-javascript lang-icon' style="color: #F7DF1E;"></i>
+            <h3>JavaScript</h3>
+            <p>25 questions covering modern JavaScript, including ES6, async/await, and DOM manipulation.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='javascript') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bx-data lang-icon' style="color: #e91e63;"></i>
+            <h3>SQL & Databases</h3>
+            <p>Test your ability to write queries and manage databases with these 25 questions.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='sql') }}" class="btn-test">Go to Test</a>
+        </div>
+        
+        <div class="assessment-card">
+            <i class='bx bx-sitemap lang-icon' style="color: #673ab7;"></i>
+            <h3>Data Structures & Algorithms</h3>
+            <p>25 fundamental questions on arrays, linked lists, trees, and sorting algorithms.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='dsa') }}" class="btn-test">Go to Test</a>
+        </div>
+        
+        <div class="assessment-card">
+            <i class='bx bx-calculator lang-icon' style="color: #4caf50;"></i>
+            <h3>Quantitative Aptitude</h3>
+            <p>Sharpen your problem-solving skills with 25 questions on speed, time, and algebra.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='quantitative') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bx-bulb lang-icon' style="color: #ff9800;"></i>
+            <h3>Logical Reasoning</h3>
+            <p>Evaluate your logical thinking with 25 puzzles and pattern-recognition questions.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='logical') }}" class="btn-test">Go to Test</a>
+        </div>
+
+        <div class="assessment-card">
+            <i class='bx bx-text lang-icon' style="color: #03a9f4;"></i>
+            <h3>Verbal Ability</h3>
+            <p>Test your grammar, vocabulary, and comprehension with these 25 questions.</p>
+            <a href="{{ url_for('start_test', user_id=user_id, topic='verbal') }}" class="btn-test">Go to Test</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

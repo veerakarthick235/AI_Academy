@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Leaderboard{% endblock %}
+
+{% block header_title %}
+    <h2><i class='bx bxs-trophy'></i> Leaderboard</h2>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/leaderboard.css') }}">
+
+<div class="leaderboard-container">
+    <table class="leaderboard-table">
+        <thead>
+            <tr>
+                <th class="rank-cell">Rank</th>
+                <th>Student</th>
+                <th>College</th>
+                <th class="score-cell">Overall Score</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body">
+            <tr>
+                <td colspan="4" style="text-align: center;">Loading leaderboard...</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="{{ url_for('static', filename='js/leaderboard.js') }}"></script>
+{% endblock %}

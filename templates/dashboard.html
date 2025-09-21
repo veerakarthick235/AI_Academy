@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard | Pro Dashboard{% endblock %}
+
+{% block header_title %}
+    <h2>Dashboard</h2>
+{% endblock %}
+
+{% block content %}
+<style>
+    /* CSS for the new Profile Header Card */
+    .profile-header-card {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(240, 246, 255, 1) 100%);
+        border-radius: 12px;
+        padding: 25px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 25px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e0e7ff;
+    }
+    .profile-header-pic-container img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    .profile-header-info h3 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+    .profile-header-info p {
+        margin: 5px 0 0 0;
+        color: #555;
+        font-size: 1rem;
+    }
+    .profile-header-details {
+        display: flex;
+        gap: 30px;
+        margin-left: auto; /* Pushes details to the right */
+        font-size: 0.9rem;
+        color: #444;
+    }
+    .profile-header-details .detail-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    .profile-header-details .detail-item i {
+        font-size: 1.4rem;
+        color: #0379F4;
+    }
+</style>
+
+<div class="profile-header-card">
+    <div class="profile-header-pic-container">
+        <img src="https://i.stack.imgur.com/34AD2.jpg" alt="Profile" id="profile-header-pic">
+    </div>
+    <div class="profile-header-info">
+        <h3 id="profile-header-name">Loading...</h3>
+        <p id="profile-header-email">Please wait</p>
+    </div>
+    <div class="profile-header-details">
+        <div class="detail-item">
+            <i class='bx bxs-graduation'></i>
+            <span id="profile-header-degree">...</span>
+        </div>
+        <div class="detail-item">
+            <i class='bx bxs-school'></i>
+            <span id="profile-header-college">...</span>
+        </div>
+    </div>
+</div>
+
+<div class="content-grid">
+    <div class="performance-card card-span-2">
+        <div class="card-header">
+            <h3 class="card-title">Performance Overview</h3>
+            <div class="toggle-buttons">
+                <button class="toggle-btn" id="weeklyBtn">Weekly</button>
+                <button class="toggle-btn active" id="monthlyBtn">Monthly</button>
+            </div>
+        </div>
+        <div class="chart-container"><canvas id="performanceChart"></canvas></div>
+    </div>
+    <div class="courses-overview">
+        <h3 class="card-title">Courses Overview</h3>
+        <div class="pie-chart-container">
+            <canvas id="pieChart"></canvas>
+            <div class="pie-center-text" id="completionPercentage">0%</div>
+        </div>
+        <div class="pie-legend">
+            <div class="legend-item"><div class="legend-color" style="background-color: #0379F4;"></div><span>Completed</span></div>
+            <div class="legend-item"><div class="legend-color" style="background-color: #009600;"></div><span>In Progress</span></div>
+        </div>
+    </div>
+    
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

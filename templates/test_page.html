@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}Assessment | {{ topic_name }}{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/quiz.css') }}">
+
+<div class="quiz-container" data-topic="{{ topic_key }}">
+    
+    <main class="quiz-main">
+        <div class="quiz-header">
+            <h2 id="question-number">Question 1 of 25</h2>
+            <div id="timer" class="timer">30:00</div>
+        </div>
+
+        <p id="question-text">Loading question...</p>
+
+        <ul id="options-container" class="options-container">
+            </ul>
+
+        <div class="quiz-actions">
+            <button id="save-next-btn" class="btn btn-primary">Save & Next</button>
+            <button id="mark-review-btn" class="btn btn-secondary">Mark for Review & Next</button>
+            <button id="clear-btn" class="btn btn-tertiary">Clear Response</button>
+        </div>
+    </main>
+
+    <aside class="quiz-sidebar">
+        <h3>Question Palette</h3>
+        <div id="question-palette">
+            </div>
+        <div class="submit-container">
+            <button id="submit-btn" class="btn-submit">Submit Test</button>
+        </div>
+    </aside>
+</div>
+
+<script src="{{ url_for('static', filename='js/questions.js') }}"></script>
+<script src="{{ url_for('static', filename='js/quiz.js') }}"></script>
+{% endblock %}

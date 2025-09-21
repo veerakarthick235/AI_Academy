@@ -1,0 +1,113 @@
+/* Chatbot Floating Action Button (FAB) */
+.chatbot-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--sidebar-bg);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    z-index: 999;
+    transition: transform 0.3s ease;
+}
+
+.chatbot-fab:hover {
+    transform: scale(1.1);
+}
+
+/* Chatbot Widget Container */
+.chatbot-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 350px;
+    max-height: 500px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease-in-out;
+}
+
+.chatbot-widget.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Chatbot Header */
+.chat-header {
+    background-color: var(--sidebar-bg);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+/* Messages Area */
+.chat-messages {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.chat-message {
+    padding: 0.7rem 1rem;
+    border-radius: 18px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.bot-message {
+    background-color: #f1f5f9;
+    color: var(--text-dark);
+    border-bottom-left-radius: 4px;
+    align-self: flex-start;
+}
+
+.user-message {
+    background-color: var(--sidebar-active-bg);
+    color: white;
+    border-bottom-right-radius: 4px;
+    align-self: flex-end;
+}
+
+/* Chat Input Form */
+.chat-input-form {
+    display: flex;
+    border-top: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.chat-input-form input {
+    flex-grow: 1;
+    border: none;
+    padding: 0.8rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+.chat-input-form button {
+    background: none;
+    border: none;
+    color: var(--sidebar-active-bg);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 0.8rem;
+}

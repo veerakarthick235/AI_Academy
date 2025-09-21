@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Register | Pro Dashboard{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-box">
+        <h2>Create an Account</h2>
+        <p>Join our platform today!</p>
+        <form id="register-form">
+            <div class="input-group"><label for="name">Full Name</label><input type="text" id="name" required></div>
+            <div class="input-group"><label for="email">Email</label><input type="email" id="email" required></div>
+            <div class="input-group"><label for="password">Password</label><input type="password" id="password" required></div>
+            <div class="input-group"><label for="registerNumber">Register Number</label><input type="text" id="registerNumber" required></div>
+            <div class="input-group"><label for="degree">Degree</label><input type="text" id="degree" required></div>
+            <div class="input-group"><label for="batch">Batch Year</label><input type="text" id="batch" required></div>
+            <div class="input-group"><label for="college">College Name</label><input type="text" id="college" required></div>
+            <button type="submit" class="auth-btn">Register</button>
+            <p class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Sign In</a></p>
+            <p id="error-message" class="error-message"></p>
+        </form>
+    </div>
+</div>
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+{% endblock %}
