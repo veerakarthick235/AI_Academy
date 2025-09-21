@@ -1,7 +1,5 @@
 # AI Academy - Interactive Learning Portal
 
-![AI Academy Dashboard](https://i.imgur.com/L1i1A5E.png)
-
 AI Academy is a full-stack web application designed as an interactive learning and assessment platform for students. It provides a complete ecosystem for students to manage their profiles, take timed assessments across various subjects, and track their performance on a real-time leaderboard.
 
 ---
