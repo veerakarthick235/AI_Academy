@@ -1,4 +1,3 @@
-# --- All imports should be at the top ---
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from firebase_config import db
 import datetime
@@ -12,7 +11,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_very_secret_key' # Change this for production
+app.secret_key = 'your_very_secret_key' 
 
 # --- Cloudinary Configuration ---
 cloudinary.config(
@@ -287,5 +286,7 @@ def chatbot_api():
         return jsonify({'success': False, 'message': str(e)}), 500
 
 
+
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.getenv("PORT", 5000))
+    app.run(debug=False, host='0.0.0.0', port=port)
