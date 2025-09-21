@@ -3,7 +3,7 @@
 AI Academy is a full-stack web application designed as an interactive learning and assessment platform for students. It provides a complete ecosystem for students to manage their profiles, take timed assessments across various subjects, and track their performance on a real-time leaderboard.
 
 ---
-## ## Features
+## Features
 
 * **User Authentication:** Secure user registration and login system powered by Firebase Authentication.
 * **Dynamic Dashboard:** A personalized dashboard that visualizes student performance with interactive charts for test scores and course completion.
@@ -16,7 +16,7 @@ AI Academy is a full-stack web application designed as an interactive learning a
 * **AI Assistant Chatbot:** A simple, rule-based chatbot to help users with common questions about the portal's features.
 
 ---
-## ## Technology Stack
+## Technology Stack
 
 * **Backend:** Python with the **Flask** web framework.
 * **Database:** **Google Firestore** for real-time data storage (user info, test results).
@@ -26,18 +26,18 @@ AI Academy is a full-stack web application designed as an interactive learning a
 * **Charting Library:** **Chart.js** for data visualization on the dashboard.
 
 ---
-## ## Setup and Installation
+## Setup and Installation
 
 To run this project locally, follow these steps:
 
-### ### Prerequisites
+## Prerequisites
 
 * Python 3.8+
 * Git
 * A Firebase project with Firestore enabled.
 * A Cloudinary account.
 
-### ### Installation
+## Installation
 
 1.  **Clone the repository:**
     ```bash
